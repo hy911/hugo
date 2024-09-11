@@ -22,10 +22,12 @@ def create_markdown_file(entry):
     content = entry.summary
 
     # 创建 Markdown 文件内容
-    markdown_content = f"""---
+     markdown_content = f"""---
 title: "{title}"
 link: "{link}"
 ---
+
+[Read more]({link})  <!-- 生成可点击的链接 -->
 
 {content}
 """
