@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 # 配置 RSS 源 URL 和 Hugo 文章目录
-RSS_FEED_URL = "http://www.fotobeginner.com/feed/"
+RSS_FEED_URL = "https://rss-worker.haiyang-una.workers.dev/rss/xiaohongshu/user/5cff9acc0000000025018949"
 HUGO_CONTENT_DIR = "./content/posts/"
 
 
@@ -18,14 +18,13 @@ def create_markdown_file(entry):
     # 从 RSS 提取所需数据
     title = entry.title
     link = entry.link
-    published = datetime(*entry.published_parsed[:6])
+    # published = datetime(*entry.published_parsed[:6])
     content = entry.summary
 
     # 创建 Markdown 文件内容
     markdown_content = f"""---
-    title: "{title}"
-    date: {published}
-    link: "{link}"
+title: "{title}"
+link: "{link}"
 ---
 
 {content}
@@ -33,7 +32,7 @@ def create_markdown_file(entry):
     # 定义 Markdown 文件的文件名
     filename = os.path.join(
         HUGO_CONTENT_DIR,
-        f"{published.strftime('%Y-%m-%d')}-{title.replace(' ', '-').lower()}.md",
+        f"{title.replace(' ', '-').lower()}.md",
     )
 
     # 将内容写入 Markdown 文件
