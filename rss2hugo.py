@@ -23,9 +23,9 @@ def create_markdown_file(entry):
 
     # 创建 Markdown 文件内容
     markdown_content = f"""---
-title: "{title}"
-date: {published}
-link: "{link}"
+    title: "{title}"
+    date: {published}
+    link: "{link}"
 ---
 
 {content}
