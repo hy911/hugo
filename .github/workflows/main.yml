@@ -51,6 +51,7 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
+          extended: true 
 
       # 运行 Hugo 构建
       - name: Build Hugo site
