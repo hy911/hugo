@@ -1,0 +1,63 @@
+name: Deploy Hugo Site with RSS Feed
+
+on:
+  # 设置为每天定时执行
+  schedule:
+    - cron: '0 0 * * *'  # 每天 00:00 UTC 运行
+  # 也可以手动触发
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出仓库代码
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # 设置 Python 环境
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      # 安装 feedparser 依赖
+      - name: Install dependencies
+        run: |
+          pip install feedparser
+
+      # 运行 RSS 脚本，生成 Markdown 文件
+      - name: Run RSS to Markdown script
+        run: |
+          python rss_to_markdown.py
+
+      # 配置 Git 提交更改
+      - name: Commit changes
+        run: |
+          git config --local user.email "your-email@example.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Update posts from RSS feed"
+        # 如果没有内容更新，不执行提交
+        continue-on-error: true
+
+      # 推送更改到 GitHub 仓库
+      - name: Push changes
+        run: |
+          git push
+
+      # 使用 Hugo 构建站点
+      - name: Install Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+
+      # 推送生成的静态站点到 Cloudflare Pages
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: your-cloudflare-pages-project
+          directory: ./public  # Hugo 输出目录
