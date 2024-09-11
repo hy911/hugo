@@ -16,23 +16,22 @@ def fetch_rss():
 # 将 RSS 项目转换为 Markdown 文件
 def create_markdown_file(entry):
     # 从 RSS 提取所需数据
-    title = entry.title
+    title = entry.title if entry.title else "Untitled"  # 如果 title 为空，使用 "Untitled"
     link = entry.link
-    # published = datetime(*entry.published_parsed[:6])
     content = entry.summary
 
     # 创建 Markdown 文件内容
     markdown_content = f"""---
-    title: "{title}"
-    link: "{link}"
-    ---
-    
-    {content}
-    """
-    # 定义 Markdown 文件的文件名
+title: "{title}"
+link: "{link}"
+---
+
+{content}
+"""
+    # 定义 Markdown 文件的文件名，确保 title 不为空
     filename = os.path.join(
         HUGO_CONTENT_DIR,
-        f"{title.replace(' ', '-').lower()}.md",
+        f"{title.replace(' ', '-').lower()}.md" if title else "untitled.md",
     )
 
     # 将内容写入 Markdown 文件
