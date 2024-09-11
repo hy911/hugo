@@ -28,7 +28,7 @@ jobs:
       # 运行 RSS 脚本，生成 Markdown 文件
       - name: Run RSS to Markdown script
         run: |
-          python rss_to_markdown.py
+          python rss2hugo.py
 
       # 配置 Git 提交更改
       - name: Commit changes
