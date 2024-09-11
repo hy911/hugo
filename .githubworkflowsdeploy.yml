@@ -35,7 +35,7 @@ jobs:
       # 配置 Git 提交更改
       - name: Commit changes
         run: |
-          git config --local user.email "your-email@example.com"
+          git config --local user.email "690322863@qq.com"
           git config --local user.name "GitHub Action"
           git add .
           git commit -m "Update posts from RSS feed"
