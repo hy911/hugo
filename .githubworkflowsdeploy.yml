@@ -1,11 +1,9 @@
 name: Deploy Hugo Site with RSS Feed
 
 on:
-  # 设置为每天定时执行
-  schedule:
-    - cron: '0 0 * * *'  # 每天 00:00 UTC 运行
-  # 也可以手动触发
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
