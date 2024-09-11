@@ -58,5 +58,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: your-cloudflare-pages-project
+          projectName: hugo
           directory: ./public  # Hugo 输出目录
