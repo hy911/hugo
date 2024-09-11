@@ -35,6 +35,7 @@ jobs:
         run: |
           git config --local user.email "690322863@qq.com"
           git config --local user.name "GitHub Action"
+          git remote set-url origin https://x-access-token:${{ secrets.ACTIONS_DEPLOY_TOKEN }}@github.com/hy911/hugo.git
           git add .
           git commit -m "Update posts from RSS feed"
         # 如果没有内容更新，不执行提交
