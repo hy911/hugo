@@ -1,0 +1,6 @@
+---
+title: "Wanderlust beckons."
+link: "https://www.xiaohongshu.com/user/profile/5cff9acc0000000025018949/"
+---
+
+<img src="http://sns-webpic-qc.xhscdn.com/202409111413/9dbf4b2ba6534ae2f7f8ebdc28a832b3/1040g00830ud7371m5c705n7vjb69b2a90l9rd2g!nc_n_nwebp_mw_1" /><br />Wanderlust beckons.
