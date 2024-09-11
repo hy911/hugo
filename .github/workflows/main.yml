@@ -52,6 +52,11 @@ jobs:
         with:
           hugo-version: 'latest'
 
+      # 运行 Hugo 构建
+      - name: Build Hugo site
+        run: |
+          hugo
+
       # 推送生成的静态站点到 Cloudflare Pages
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@1
