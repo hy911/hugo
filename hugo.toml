@@ -1,3 +1,6 @@
 languageCode = 'zh-hans'
 title = 'My New Hugo Site'
 theme = 'ananke'
+[markup.goldmark]
+    [markup.goldmark.renderer]
+        unsafe = true
